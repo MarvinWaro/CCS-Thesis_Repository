@@ -277,19 +277,19 @@ nav {
 .summary-primary,
 .summary-indigo,
 .summary-success,
-.summary-danger {
+.summary-info {
     transition: .2s;
 }
 .summary-primary:hover,
 .summary-indigo:hover,
 .summary-success:hover,
-.summary-danger:hover {
+.summary-info:hover {
     color: var(--bs-light) !important;
 }
 .summary-primary:hover .summary-icon,
 .summary-indigo:hover .summary-icon,
 .summary-success:hover .summary-icon,
-.summary-danger:hover .summary-icon {
+.summary-info:hover .summary-icon {
     background-color: var(--bs-light) !important;
 }
 .summary-primary:hover .summary-icon {
@@ -301,8 +301,8 @@ nav {
 .summary-success:hover .summary-icon {
     color: var(--bs-success) !important;
 }
-.summary-danger:hover .summary-icon {
-    color: var(--bs-danger) !important;
+.summary-info:hover .summary-icon {
+    color: var(--bs-info) !important;
 }
 .summary-primary:hover {
     background-color: var(--bs-primary) !important;
@@ -313,8 +313,8 @@ nav {
 .summary-success:hover {
     background-color: var(--bs-success) !important;
 }
-.summary-danger:hover {
-    background-color: var(--bs-danger) !important;
+.summary-info:hover {
+    background-color: var(--bs-info) !important;
 }
 /* end: Suummary */
 /* end: Main */
@@ -705,4 +705,5 @@ a{
     text-decoration: none;
     color: var(--bs-green);
 }
+
 

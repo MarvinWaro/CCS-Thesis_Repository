@@ -188,7 +188,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <span class="me-2 d-none d-sm-block">Marvin Waro</span>
+              <span class="me-2 d-none d-sm-block"><?php echo $_SESSION['fullname'] ?></span>
               <img
                 class="navbar-profile-image"
                 src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
@@ -214,11 +214,19 @@
               >
                 <div>
                   <i
-                    class="ri-shopping-cart-2-line summary-icon bg-primary mb-2"
+                    class="ri-user-line summary-icon bg-primary mb-2"
                   ></i>
-                  <div>Sales</div>
+                  <div>Total Student</div>
                 </div>
-                <h4>$435</h4>
+                <h4>
+                  <?php
+                    require '../class/dbconfig.php';
+                    $query = "SELECT id FROM student ORDER BY id";
+                    $query_run = mysqli_query($connection, $query);
+                    $row = mysqli_num_rows($query_run);
+                    echo $row
+                  ?>
+                </h4>
               </a>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
@@ -228,11 +236,19 @@
               >
                 <div>
                   <i
-                    class="ri-shopping-cart-2-line summary-icon bg-indigo mb-2"
+                    class="ri-group-line summary-icon bg-indigo mb-2"
                   ></i>
-                  <div>Sales</div>
+                  <div>Total Faculty</div>
                 </div>
-                <h4>$435</h4>
+                <h4>
+                <?php
+                    require '../class/dbconfig.php';
+                    $query = "SELECT id FROM faculty ORDER BY id";
+                    $query_run = mysqli_query($connection, $query);
+                    $row = mysqli_num_rows($query_run);
+                    echo $row
+                  ?>
+                </h4>
               </a>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
@@ -242,25 +258,33 @@
               >
                 <div>
                   <i
-                    class="ri-shopping-cart-2-line summary-icon bg-success mb-2"
+                    class="ri-group-line summary-icon bg-success mb-2"
                   ></i>
-                  <div>Sales</div>
+                  <div>Accounts</div>
                 </div>
-                <h4>$435</h4>
+                <h4>
+                <?php
+                    require '../class/dbconfig.php';
+                    $query = "SELECT id FROM useraccounts ORDER BY id";
+                    $query_run = mysqli_query($connection, $query);
+                    $row = mysqli_num_rows($query_run);
+                    echo $row
+                  ?>
+                </h4>
               </a>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
               <a
                 href="#"
-                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-danger"
+                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-info"
               >
                 <div>
                   <i
-                    class="ri-shopping-cart-2-line summary-icon bg-danger mb-2"
+                    class="ri-archive-drawer-line summary-icon bg-info mb-2"
                   ></i>
-                  <div>Sales</div>
+                  <div>Total Archives</div>
                 </div>
-                <h4>$435</h4>
+                <h4>6</h4>
               </a>
             </div>
           </div>
