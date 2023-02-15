@@ -1,3 +1,46 @@
+<?php
+
+
+require_once '../class/database.php';
+require_once '../class/faculty.class.php';
+
+
+
+session_start();
+/*
+    if user is not login then redirect to login page,
+    this is to prevent users from accessing pages that requires
+    authentication such as the dashboard
+*/
+if (!isset($_SESSION['logged-in'])){
+    header('location: ../login/login.php');
+}
+
+
+if(isset($_POST['save'])){
+
+    $faculty = new Faculty();
+    //sanitize user inputs
+    $faculty->firstname = htmlentities($_POST['firstname']);
+    $faculty->middle_name = htmlentities($_POST['middle_name']);
+    $faculty->lastname = htmlentities($_POST['lastname']);
+    $faculty->username = htmlentities($_POST['username']);
+    $faculty->email = htmlentities($_POST['email']);
+    $faculty->password = htmlentities($_POST['password']);
+    $faculty->department = htmlentities($_POST['department']);
+    $faculty->type = $_POST['type'];
+    if(isset($_POST)){
+        if($faculty->add()){
+            //redirect user to create page after saving
+            header('location: manage_faculty.php');
+        }
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -184,7 +227,7 @@
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Logout </a></li>
+              <li><a class="dropdown-item" href="../login/logout.php">Logout </a></li>
             </ul>
           </div>
         </nav>
@@ -194,69 +237,124 @@
         <div class="py-4">
           <!-- start: content -->
           <div class="container">
-
-                <table id="example" class="table table-striped" style="width:100%">
-                    <thead id="head">
-                        <tr>
-                            <th>#</th>
-                            <th>Titles</th>
-                            <th>Department</th>
-                            <th>Section</th>
-                            <th>Date of Upload</th>
-                            <th>Semester</th>
-                            <th>Grade</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>System Architect</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-edit" href="#">Edit</a>
-                                    <a class="action-delete" href="#">Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Software Engineering</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-edit" href="#">Edit</a>
-                                    <a class="action-delete" href="#">Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Cyber Crime</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-edit" href="#">Edit</a>
-                                    <a class="action-delete" href="#">Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="head-cont d-flex justify-content-end pb-2">
+                <button type="button" class="btn btn-primary add-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add new Faculty
+                </button>
             </div>
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Username</th>
+                                <th>Department</th>
+                                <?php
+                                    if($_SESSION['user_type'] == 'admin'){ 
+                                ?>
+                                    <th class="action">Action</th>
+                                <?php
+                                    }
+                                ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            require_once '../class/faculty.class.php';
+
+                            $faculty = new Faculty();
+                            //We will now fetch all the records in the array using loop
+                            //use as a counter, not required but suggested for the table
+                            $i = 1;
+                            //loop for each record found in the array
+                            foreach ($faculty->show() as $value){ //start of loop
+                        ?>
+                            <tr>
+                                <!-- always use echo to output PHP values -->
+                                <td><?php echo $i ?></td>
+                                <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name']?></td>
+                                <td><?php echo $value['email'] ?></td>
+                                <td><?php echo $value['username'] ?></td>
+                                <td><?php echo $value['department'] ?></td>
+                                <?php
+                                    if($_SESSION['user_type'] == 'admin'){ 
+                                ?>
+                                    <td>
+                                        <div class="actions">
+                                            <a class="action-edit" href="#">Edit</a>
+                                             <a class="action-delete" href="delete_faculty.php?id=<?php echo $value['id'] ?>" >Delete</a>
+                                        </div>
+                                    </td>
+                                <?php
+                                    }
+                                ?>
+                            </tr>
+                        <?php
+                            $i++;
+                        //end of loop
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+    </div>
+
+<!--modal-->
+
+
+        <div class="modal fade>" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Faculty</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    <form class="add-form" action="manage_faculty.php" method="post">
+
+
+                                <div class="cont">
+                                <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                                <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name (optional)*" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } ?>">
+                                </div>
+
+                                <div class="cont">
+                                <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
+                                <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
+                                </div>
+
+                                <div class="cont">
+                                <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
+                                <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
+                                </div>
+
+                                <div class="cont">
+                                <select name="department" id="department">
+                                    <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select Department--</option>
+                                    <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
+                                    <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
+                                </select>
+                                </div>
+
+                                <div class="cont">
+                                <label for="type">Active?</label>
+                                <input class="checkbox" type="checkbox" name="type" id="faculty" value="faculty" required <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
+                                </div>
+
+                        </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <!--<button type="submit" value="Save" name="save" class="btn btn-primary">Save changes</button>-->
+                                    <input class="button form-input" type="submit" value="Save" name="save">
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
     </div>
 
           <!-- end: content -->

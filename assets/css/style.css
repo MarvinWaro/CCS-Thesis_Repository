@@ -296,7 +296,7 @@ nav {
     color: var(--bs-primary) !important;
 }
 .summary-indigo:hover .summary-icon {
-    color: var(--bs-indigo) !important;
+    color: var(--bs-green) !important;
 }
 .summary-success:hover .summary-icon {
     color: var(--bs-success) !important;
@@ -308,7 +308,7 @@ nav {
     background-color: var(--bs-primary) !important;
 }
 .summary-indigo:hover {
-    background-color: var(--bs-indigo) !important;
+    background-color: var(--bs-green) !important;
 }
 .summary-success:hover {
     background-color: var(--bs-success) !important;
@@ -426,3 +426,283 @@ nav {
     margin-left: 3px;
     text-decoration: none;
 }
+
+.container .add-button{
+    background: var(--maincolor);
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container .add-button:hover{
+    color: white;
+    background: var(--maincolorMdark);
+}
+
+/*login*/
+
+.login-container {
+    width: 100%;
+    height: calc(100vh);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    background-color: var(--maincolor);
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-form .divider {
+    margin-top: 30px;
+}
+
+.login-form {
+    max-width: 345px;
+    padding: 26px;
+    margin: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.5);
+}
+
+.login-form .logo-details {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .logo-details i {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--primary);
+    text-align: center;
+    padding-right: 5px;
+}
+
+.login-form .logo-details .logo-name {
+    color: #3C6255;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.form-input,
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 7px 0;
+    font-size: 13px
+}
+
+select {
+    font-size: 13px !important;
+}
+
+.divider {
+    border: 0;
+    border-bottom: 1px solid var(--maincolor);
+    width: 100%;
+    margin: 20px 0;
+}
+
+.save-btn {
+    background-color: rgb(180, 224, 183);
+    transition: 0.3s ease;
+    border: none;
+    width: 100%;
+}
+
+
+.save-btn:hover {
+    background-color: #3C6255;
+    color: white;
+}
+
+.create {
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+.forgot {
+    float: right;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--maincolor);
+    text-decoration: underline !important;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px
+}
+
+.login-logo {
+    width: 110px;
+}
+
+.button-login {
+    background-color: rgb(180, 224, 183);
+    transition: 0.3s ease;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.button-login:hover {
+    background-color: #3C6255;
+    color: white;
+}
+
+/*Create Form*/
+
+.create-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    background-color: #3C6255;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+.create-form {
+    max-width: 345px;
+    padding: 26px;
+    margin: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
+
+.create-form h3 {
+    color: #3C6255;
+    text-align: center;
+}
+
+.pbutton {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.reset_btn {
+    background-color: #FA9494;
+    transition: 0.3s ease;
+    border: none;
+    width: 100%;
+    margin-right: 5px;
+}
+
+.reset_btn:hover {
+    background-color: #EB1D36;
+    color: white;
+}
+
+label {
+    font-size: 13px;
+}
+
+/*modal*/
+
+.add-form .cont {
+    width: 100%;
+    display: flex;
+
+}
+
+.add-form .cont input,
+.add-form .cont select {
+    margin: 6px 1px 6px 1px;
+    justify-content: space-between;
+}
+
+
+.form-cont .edit-form {
+    margin: 10px;
+    max-width: 380px;
+    padding-bottom: 20px;
+}
+
+.form-cont .edit-form select {
+    margin: 6px 1px 6px 1px;
+}
+
+.form-cont a.back {
+    text-decoration: none;
+    color: var(--maincolor);
+    font-size: 17px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 7px;
+}
+
+.modal-body select {
+    margin: 6px 1px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap !important;
+}
+
+.modal-footer .form-input {
+    width: 30%;
+    background-color: rgb(180, 224, 183);
+    transition: 0.3s ease;
+    border: none;
+}
+
+
+.modal-footer .form-input:hover {
+    background: var(--maincolor);
+    color: #ffff;
+}
+
+@media (max-width: 320px) {
+
+    .login-form .logo-details .logo-name {
+        color: #3C6255;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .create {
+        font-size: 12px;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .forgot {
+        float: right;
+        font-size: 12px;
+        text-decoration: none;
+        color: var(--maincolor);
+        text-decoration: underline !important;
+    }
+
+}
+
+thead{
+    text-transform: uppercase;
+    border-bottom:  #000;
+}
+
+.form-cont .back{
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--bs-green);
+}
+
