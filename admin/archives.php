@@ -236,8 +236,9 @@
                             <td>89%</td>
                             <td>
                                 <div class="actions">
-                                    <a class="action-edit" href="#">Edit</a>
-                                    <a class="action-delete" href="#">Delete</a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -251,8 +252,9 @@
                             <td>89%</td>
                             <td>
                                 <div class="actions">
-                                    <a class="action-edit" href="#">Edit</a>
-                                    <a class="action-delete" href="#">Delete</a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -266,8 +268,9 @@
                             <td>89%</td>
                             <td>
                                 <div class="actions">
-                                    <a class="action-edit" href="#">Edit</a>
-                                    <a class="action-delete" href="#">Delete</a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
                         </tr>

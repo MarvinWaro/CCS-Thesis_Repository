@@ -413,18 +413,25 @@ nav {
     background: orange;
 }
 
+.table .actions .action-view{
+    color: #fff;
+    background: var(--maincolorMdark);
+}
+
 .table .actions .action-delete{
     color: white;
     background: lightcoral;
 }
 
 .table .actions .action-edit,
+.table .actions .action-view,
 .table .actions .action-delete{
     
     border-radius: 6px;
     padding: 7px 10px;
     margin-left: 3px;
     text-decoration: none;
+    font-weight:lighter;
 }
 
 .container .add-button{

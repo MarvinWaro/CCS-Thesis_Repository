@@ -1,3 +1,38 @@
+<?php
+    require_once '../class/database.php';
+    require_once '../class/student.class.php';
+    
+    //we start session since we need to use session values
+    session_start();
+    //creating an array for list of users can login to the system
+
+    if(isset($_POST['save'])){
+
+        $student = new Student();
+        //sanitize user inputs
+        $student->firstname = htmlentities($_POST['firstname']);
+        $student->middle_name = htmlentities($_POST['middle_name']);
+        $student->lastname = htmlentities($_POST['lastname']);
+        $student->username = htmlentities($_POST['username']);
+        $student->email = htmlentities($_POST['email']);
+        $student->password = htmlentities($_POST['password']);
+        $student->course = htmlentities($_POST['course']);
+        $student->year_level = htmlentities($_POST['year_level']);
+        $student->section = htmlentities($_POST['section']);
+        $student->sem = htmlentities($_POST['sem']);
+        $student->type = $_POST['type'];
+
+        if(isset($_POST)){
+            if($student->add()){
+                //redirect user to create page after saving
+                header('location: login.php');
+            }
+        }
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

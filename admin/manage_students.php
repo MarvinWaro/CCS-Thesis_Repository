@@ -284,8 +284,8 @@ if(isset($_POST['save'])){
                                         ?>
                                             <td>
                                                 <div class="actions">
-                                                    <a class="action-edit" href="edit_student.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                                    <a class="action-delete" href="delete_student.php?id=<?php echo $value['id'] ?>">Delete</a>
+                                                    <a class="action-edit" href="edit_student.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
+                                                    <a class="action-delete" href="delete_student.php?id=<?php echo $value['id'] ?>"><i class="ri-delete-bin-line"></i></a>
                                                 </div>
                                             </td>
                                         <?php
