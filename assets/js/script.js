@@ -68,10 +68,10 @@ $(document).ready(function() {
     const visitorsChart = new Chart($('#visitors-chart'), {
         type: 'doughnut',
         data: {
-            labels: ['Children', 'Teenager', 'Parent'],
+            labels: ['Student', 'Faculty', 'Archives'],
             datasets: [{
                 backgroundColor: ['#6610f2', '#198754', '#ffc107'],
-                data: [40, 60, 80],
+                data: [11, 4, 3],
             }]
         }
     })

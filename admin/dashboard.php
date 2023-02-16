@@ -291,6 +291,19 @@
           <!-- end: Summary -->
           <!-- start: Graph -->
 
+          <div class="row g-3 mt-2">
+                    <div class="col-12 col-md-5 col-xl-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white">
+                                Data Chart
+                            </div>
+                            <div class="card-body">
+                                <canvas id="visitors-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
           <!-- end: Graph -->
         </div>
         <!-- end: Content -->
